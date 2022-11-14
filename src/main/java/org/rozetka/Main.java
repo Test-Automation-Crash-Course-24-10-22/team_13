@@ -1,4 +1,4 @@
-package org.team13;
+package org.rozetka;
 
 public class Main {
 }

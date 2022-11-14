@@ -1,4 +1,4 @@
-package org.team13;
+package org.rozetka;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
