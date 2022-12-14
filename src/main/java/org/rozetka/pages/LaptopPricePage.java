@@ -1,30 +1,29 @@
 package org.rozetka.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.rozetka.pages.modules.HeaderModule;
-import org.rozetka.pages.modules.LaptopFilterModule;
+import org.rozetka.locators.LaptopPriceLocators;
+import org.rozetka.pages.components.LaptopFilterComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LaptopPricePage extends BasePage {
 
-    private HeaderModule headerModule;
-    private LaptopFilterModule laptopFilterModule;
-
-    private By priceOfItems = By.xpath("//span[contains(@class, 'price-value')]");
+    private LaptopFilterComponent laptopFilterComponent;
 
     public LaptopPricePage(WebDriver driver) {
         super(driver);
-        this.headerModule = new HeaderModule(driver);
-        this.laptopFilterModule = new LaptopFilterModule(driver);
+        this.laptopFilterComponent = new LaptopFilterComponent(driver);
+    }
+
+    public LaptopFilterComponent onLaptopFilterComponent() {
+        return laptopFilterComponent;
     }
 
     public List<Integer> getActualPricesOfItems() {
         pause(5);
-        waitForElementsToVisible(priceOfItems);
-        return driver.findElements(priceOfItems)
+        waitForElementsToBeVisible(LaptopPriceLocators.PRICE_OF_ITEMS.getPath());
+        return driver.findElements(LaptopPriceLocators.PRICE_OF_ITEMS.getPath())
                 .stream()
                 .map(e -> e.getText().replaceAll(" ", ""))
                 .map(Integer::parseInt)

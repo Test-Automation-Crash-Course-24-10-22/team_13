@@ -1,40 +1,29 @@
 package org.rozetka.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.rozetka.pages.modules.HeaderModule;
-import org.rozetka.pages.modules.LaptopFilterModule;
+import org.rozetka.locators.LaptopBrandsLocators;
+import org.rozetka.pages.components.LaptopFilterComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LaptopBrandsPage extends BasePage {
+public class LaptopBrandsPage extends BasePageWithHeader {
 
-    private HeaderModule headerModule;
-    private LaptopFilterModule laptopFilterModule;
-
-    private By laptopTitle = By.xpath("//span[@class='goods-tile__title']");
-
-    private By availabilityOfGoods = By.xpath("//div[contains(@class, 'goods-tile__availability')]");
+    private LaptopFilterComponent laptopFilterComponent;
 
     public LaptopBrandsPage(WebDriver driver) {
         super(driver);
-        this.headerModule = new HeaderModule(driver);
-        this.laptopFilterModule = new LaptopFilterModule(driver);
+        this.laptopFilterComponent = new LaptopFilterComponent(driver);
     }
 
-    public HeaderModule onHeaderModule() {
-        return headerModule;
-    }
-
-    public LaptopFilterModule onLaptopFilterModule() {
-        return laptopFilterModule;
+    public LaptopFilterComponent onLaptopFilterComponent() {
+        return laptopFilterComponent;
     }
 
     public List<String> getActualLaptopTitles(){
         pause(5);
-        waitForElementsToBePresent(laptopTitle);
-        return driver.findElements(laptopTitle)
+        waitForElementsToBePresent(LaptopBrandsLocators.LAPTOP_TITLE.getPath());
+        return driver.findElements(LaptopBrandsLocators.LAPTOP_TITLE.getPath())
                 .stream()
                 .map(e -> e.getText().trim())
                 .collect(Collectors.toList());
@@ -42,8 +31,8 @@ public class LaptopBrandsPage extends BasePage {
 
     public List<String> getAvailabilityOfGoodsList() {
         pause(5);
-        waitForElementsToVisible(availabilityOfGoods);
-        return driver.findElements(availabilityOfGoods)
+        waitForElementsToBeVisible(LaptopBrandsLocators.AVAILABILITY_OF_GOODS.getPath());
+        return driver.findElements(LaptopBrandsLocators.AVAILABILITY_OF_GOODS.getPath())
                 .stream()
                 .map(e -> e.getText().trim())
                 .collect(Collectors.toList());

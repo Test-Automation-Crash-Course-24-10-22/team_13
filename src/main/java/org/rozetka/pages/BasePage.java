@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class BasePage {
+public abstract class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -24,16 +24,16 @@ public class BasePage {
         }
     }
 
-    protected void waitForElementToVisible(By locator){
+    protected void waitForElementToBeVisible(By locator){
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    protected void waitForElementsToVisible(By locator){
+    protected void waitForElementsToBeVisible(By locator){
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
     protected void waitForElementsToBePresent(By locator){
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
-    protected void waitForElementBeClickable(By locator){
+    protected void waitForElementToBeClickable(By locator){
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
