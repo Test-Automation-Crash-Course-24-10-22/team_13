@@ -37,16 +37,18 @@ public class LaptopFilterComponent extends BasePage {
         return new LaptopPricePage(driver);
     }
 
-    public void inputMinPrice(int minPrice) {
+    public LaptopFilterComponent inputMinPrice(int minPrice) {
         waitForElementToBeVisible(LaptopFilterLocators.PRICE_MIN_INPUT.getPath());
         driver.findElement(LaptopFilterLocators.PRICE_MIN_INPUT.getPath()).clear();
         driver.findElement(LaptopFilterLocators.PRICE_MIN_INPUT.getPath()).sendKeys(String.valueOf(minPrice));
+        return this;
     }
 
-    public void inputMaxPrice(int maxPrice) {
+    public LaptopFilterComponent inputMaxPrice(int maxPrice) {
         waitForElementToBeVisible(LaptopFilterLocators.PRICE_MAX_INPUT.getPath());
         driver.findElement(LaptopFilterLocators.PRICE_MAX_INPUT.getPath()).clear();
         driver.findElement(LaptopFilterLocators.PRICE_MAX_INPUT.getPath()).sendKeys(String.valueOf(maxPrice));
+        return this;
     }
 
     public void clickOkPriceFilterButton() {
