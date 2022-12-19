@@ -15,6 +15,7 @@ public class LaptopFilterComponent extends BasePage {
     }
 
     public LaptopBrandsPage chooseAppleBrand(){
+        pause(5);
         waitForElementToBeVisible(LaptopFilterLocators.BRAND_INPUT.getPath());
         driver.findElement(LaptopFilterLocators.BRAND_INPUT.getPath()).click();
         driver.findElement(LaptopFilterLocators.BRAND_INPUT.getPath()).sendKeys(APPLE);

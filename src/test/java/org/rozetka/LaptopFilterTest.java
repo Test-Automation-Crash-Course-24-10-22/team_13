@@ -3,7 +3,6 @@ package org.rozetka;
 import org.rozetka.pages.*;
 import org.rozetka.utils.TestDataReader;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
@@ -17,11 +16,6 @@ public class LaptopFilterTest extends BaseTest {
     private static final int MAX_PRICE = TestDataReader.get().getMaxPrice();
     private static final String AVAILABILITY_OF_GOODS_IS_AVAILABLE = "Є в наявності";
     private static final String AVAILABILITY_OF_GOODS_READY_FOR_DELIVERY = "Готовий до відправлення";
-
-    @BeforeClass
-    public void setPreconditions() {
-        setDriver();
-    }
 
     @Test
     public void filterWithAppleLaptopsTest() {
