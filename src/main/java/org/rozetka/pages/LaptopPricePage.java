@@ -1,5 +1,6 @@
 package org.rozetka.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.rozetka.locators.LaptopPriceLocators;
 import org.rozetka.pages.components.LaptopFilterComponent;
@@ -20,6 +21,7 @@ public class LaptopPricePage extends BasePage {
         return laptopFilterComponent;
     }
 
+    @Step("Get actual prices of items")
     public List<Integer> getActualPricesOfItems() {
         pause(5);
         waitForElementsToBeVisible(LaptopPriceLocators.PRICE_OF_ITEMS.getPath());

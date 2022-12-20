@@ -1,5 +1,6 @@
 package org.rozetka.pages.components;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.rozetka.locators.HeaderLocators;
@@ -12,6 +13,7 @@ public class HeaderComponent extends BasePage {
         super(driver);
     }
 
+    @Step("Search laptops")
     public LaptopsPage searchLaptops() {
         waitForElementsToBeVisible(HeaderLocators.SEARCH_INPUT.getPath());
         driver.findElement(HeaderLocators.SEARCH_INPUT.getPath()).sendKeys("Ноутбук");

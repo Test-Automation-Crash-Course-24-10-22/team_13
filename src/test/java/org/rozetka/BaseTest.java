@@ -4,14 +4,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
 
     private static final String ROZETKA_URL = "https://rozetka.com.ua/ua/";
-    protected WebDriver driver;
+    protected static WebDriver driver;
 
     @BeforeSuite
     public void beforeSuite(){
@@ -29,8 +28,12 @@ public class BaseTest {
         driver.get(ROZETKA_URL);
     }
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
     @AfterMethod
-    public void afterSuite(){
+    public void tearDown(){
         if(driver != null){
             driver.quit();
         }

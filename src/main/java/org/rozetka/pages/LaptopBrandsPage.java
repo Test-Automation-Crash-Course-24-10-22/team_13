@@ -1,5 +1,6 @@
 package org.rozetka.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.rozetka.locators.LaptopBrandsLocators;
 import org.rozetka.pages.components.LaptopFilterComponent;
@@ -20,6 +21,7 @@ public class LaptopBrandsPage extends BasePageWithHeader {
         return laptopFilterComponent;
     }
 
+    @Step("Get actual laptop titles")
     public List<String> getActualLaptopTitles(){
         pause(5);
         waitForElementsToBePresent(LaptopBrandsLocators.LAPTOP_TITLE.getPath());
@@ -29,6 +31,7 @@ public class LaptopBrandsPage extends BasePageWithHeader {
                 .collect(Collectors.toList());
     }
 
+    @Step("Get availability of goods list")
     public List<String> getAvailabilityOfGoodsList() {
         pause(5);
         waitForElementsToBeVisible(LaptopBrandsLocators.AVAILABILITY_OF_GOODS.getPath());

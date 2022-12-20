@@ -1,5 +1,7 @@
 package org.rozetka;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
 import org.rozetka.pages.*;
 import org.rozetka.utils.TestDataReader;
 import org.testng.Assert;
@@ -18,6 +20,8 @@ public class LaptopFilterTest extends BaseTest {
     private static final String AVAILABILITY_OF_GOODS_READY_FOR_DELIVERY = "Готовий до відправлення";
 
     @Test
+    @Owner("Denis Pitsul")
+    @Description("Filter with apple laptops test")
     public void filterWithAppleLaptopsTest() {
         List<String> laptopTitles = new HomePage(driver)
                 .onHeaderComponent()
@@ -29,7 +33,9 @@ public class LaptopFilterTest extends BaseTest {
     }
 
     @Test
-    public void filterWithPriceTest() {
+    @Owner("Denis Pitsul")
+    @Description("Filter with 20000 min price and 30000 max price test")
+    public void filterWith20000MinPriceAnd30000MaxPriceTest() {
         List<Integer> actualPricesOfItems = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()
@@ -41,7 +47,9 @@ public class LaptopFilterTest extends BaseTest {
     }
 
     @Test
-    public void filterWith30000StartPriceAnd20000PriceIsNotAllowedTest() {
+    @Owner("Denis Pitsul")
+    @Description("Filter with 30000 min price and 20000 max price is not allowed test")
+    public void filterWith30000MinPriceAnd20000MaxPriceIsNotAllowedTest() {
         boolean isOkPriceFilterButtonDisabled = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()
@@ -53,6 +61,8 @@ public class LaptopFilterTest extends BaseTest {
     }
 
     @Test
+    @Owner("Denis Pitsul")
+    @Description("Sort from the cheapest to most expensive test")
     public void sortFromTheCheapestToMostExpensiveTest() {
         List<Integer> actualPricesOfSortedItems = new HomePage(driver)
                 .onHeaderComponent()
@@ -67,7 +77,9 @@ public class LaptopFilterTest extends BaseTest {
     }
 
     @Test
-    public void filterOnlyAvailableLaptopFromAppleTest() {
+    @Owner("Denis Pitsul")
+    @Description("Filter only available laptops from apple test")
+    public void filterOnlyAvailableLaptopsFromAppleTests() {
         LaptopBrandsPage laptopBrandsPage = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()

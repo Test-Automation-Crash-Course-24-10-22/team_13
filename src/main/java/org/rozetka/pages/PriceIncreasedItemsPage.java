@@ -1,5 +1,6 @@
 package org.rozetka.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.rozetka.locators.PriceIncreasedItemsLocators;
 
@@ -12,6 +13,7 @@ public class PriceIncreasedItemsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Get actual prices of sorted from lower to higher items")
     public List<Integer> getActualPricesOfSortedFromLowerToHigherItems(){
         pause(5);
         waitForElementsToBeVisible(PriceIncreasedItemsLocators.FROM_LOWER_TO_HIGHER_PRICING_SORTED_ITEMS.getPath());

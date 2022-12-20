@@ -24,18 +24,11 @@ public class LaptopsPage extends BasePage {
     }
 
     public PriceIncreasedItemsPage selectLowerToHigherOption(){
+        pause(5);
         waitForElementToBeVisible(LaptopsLocators.SORT_FIELD.getPath());
         Select select = new Select(driver.findElement(LaptopsLocators.SORT_FIELD.getPath()));
         waitForElementToBeVisible(LaptopsLocators.FROM_LOWER_TO_HIGHER_OPTION.getPath());
         select.selectByVisibleText(FROM_LOWER_TO_HIGHER_OPTION);
         return new PriceIncreasedItemsPage(driver);
-    }
-
-    public List<String> getActualLaptopTitles(){
-        waitForElementsToBeVisible(LaptopsLocators.LAPTOP_TITLE.getPath());
-        return driver.findElements(LaptopsLocators.LAPTOP_TITLE.getPath())
-                .stream()
-                .map(e -> e.getText().trim())
-                .collect(Collectors.toList());
     }
 }
