@@ -79,7 +79,7 @@ public class LaptopFilterTest extends BaseTest {
     @Test
     @Owner("Denis Pitsul")
     @Description("Filter only available laptops from apple test")
-    public void filterOnlyAvailableLaptopsFromAppleTests() {
+    public void filterOnlyAvailableLaptopsFromAppleTest() {
         LaptopBrandsPage laptopBrandsPage = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()
