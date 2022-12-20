@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.rozetka.locators.LaptopsLocators;
 import org.rozetka.pages.components.LaptopFilterComponent;
 
-public class LaptopsPage extends BasePage {
+public class LaptopsPage extends BasePageWithHeader {
 
     private LaptopFilterComponent laptopFilterComponent;
 

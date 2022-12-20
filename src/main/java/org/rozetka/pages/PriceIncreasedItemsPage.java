@@ -7,7 +7,7 @@ import org.rozetka.locators.PriceIncreasedItemsLocators;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PriceIncreasedItemsPage extends BasePage {
+public class PriceIncreasedItemsPage extends BasePageWithHeader {
 
     public PriceIncreasedItemsPage(WebDriver driver) {
         super(driver);

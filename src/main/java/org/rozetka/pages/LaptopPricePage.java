@@ -8,7 +8,7 @@ import org.rozetka.pages.components.LaptopFilterComponent;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LaptopPricePage extends BasePage {
+public class LaptopPricePage extends BasePageWithHeader {
 
     private LaptopFilterComponent laptopFilterComponent;
 
