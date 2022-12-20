@@ -5,9 +5,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.rozetka.locators.LaptopsLocators;
 import org.rozetka.pages.components.LaptopFilterComponent;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class LaptopsPage extends BasePage {
 
     private LaptopFilterComponent laptopFilterComponent;
