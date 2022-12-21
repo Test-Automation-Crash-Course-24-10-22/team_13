@@ -9,7 +9,7 @@ The target website is https://rozetka.com.ua/ua/
 
 Automated tests:
 
- - Checking filtering laptops by the brand, price and availibility.
+ - Checking filtering laptops by the brand, price and availability.
  - Checking sorting notebooks by price.
 
 ## Executing the Tests
