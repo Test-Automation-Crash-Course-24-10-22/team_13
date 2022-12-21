@@ -21,7 +21,7 @@ Run the test.
 ```
 mvn clean test
 ```
-Generate the report.
+Go to folder with project. Generate the report.
 ```
-allure serve target/allure-results
+allure serve
 ```
