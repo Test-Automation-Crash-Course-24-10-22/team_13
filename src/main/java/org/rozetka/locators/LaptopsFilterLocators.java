@@ -2,11 +2,10 @@ package org.rozetka.locators;
 
 import org.openqa.selenium.By;
 
-public enum LaptopFilterLocators {
+public enum LaptopsFilterLocators {
 
     BRAND_INPUT(By.xpath("//div[@data-filter-name='producer']//input[@type='search']")),
     APPLE_CHECKBOX(By.xpath("//a[@data-id='Apple']")),
-    MICROSOFT_CHECKBOX(By.xpath("//a[@data-id='Microsoft']")),
     AVAILABLE_GOODS_CHECKBOX(By.xpath("//a[@data-id='Є в наявності']")),
     PRICE_MIN_INPUT(By.xpath("//input[@formcontrolname='min']")),
     PRICE_MAX_INPUT(By.xpath("//input[@formcontrolname='max']")),
@@ -14,7 +13,7 @@ public enum LaptopFilterLocators {
 
     private final By path;
 
-    LaptopFilterLocators(By path) {
+    LaptopsFilterLocators(By path) {
         this.path = path;
     }
 

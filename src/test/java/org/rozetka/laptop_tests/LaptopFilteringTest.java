@@ -1,17 +1,16 @@
-package org.rozetka;
+package org.rozetka.laptop_tests;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Owner;
-import org.rozetka.pages.*;
+import io.qameta.allure.*;
+import org.rozetka.BaseTest;
+import org.rozetka.pages.home.HomePage;
+import org.rozetka.pages.laptops.LaptopsBrandPage;
 import org.rozetka.utils.TestDataReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class LaptopFilterTest extends BaseTest {
+public class LaptopFilteringTest extends BaseTest {
 
     private static final String APPLE = TestDataReader.get().getAppleBrand();
     private static final int MIN_PRICE = TestDataReader.get().getMinPrice();
@@ -19,9 +18,12 @@ public class LaptopFilterTest extends BaseTest {
     private static final String AVAILABILITY_OF_GOODS_IS_AVAILABLE = "Є в наявності";
     private static final String AVAILABILITY_OF_GOODS_READY_FOR_DELIVERY = "Готовий до відправлення";
 
-    @Test
+    @Test(priority = 1)
     @Owner("Denis Pitsul")
-    @Description("Filter with apple laptops test")
+    @Description("Verify if user can filter laptops from apple brand")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/9")
+    @Issue("9")
     public void filterWithAppleLaptopsTest() {
         List<String> laptopTitles = new HomePage(driver)
                 .onHeaderComponent()
@@ -32,9 +34,12 @@ public class LaptopFilterTest extends BaseTest {
         Assert.assertTrue(laptopTitles.stream().allMatch(t -> t.contains(APPLE)), "Not all laptop titles contains " + APPLE);
     }
 
-    @Test
+    @Test(priority = 2)
     @Owner("Denis Pitsul")
-    @Description("Filter with 20000 min price and 30000 max price test")
+    @Description("Verify if user can filter with 20000 min price and 30000 max price")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/10")
+    @Issue("10")
     public void filterWith20000MinPriceAnd30000MaxPriceTest() {
         List<Integer> actualPricesOfItems = new HomePage(driver)
                 .onHeaderComponent()
@@ -46,9 +51,12 @@ public class LaptopFilterTest extends BaseTest {
                 "Not all prices more than " + MIN_PRICE + " and less than " + MAX_PRICE);
     }
 
-    @Test
+    @Test(priority = 3)
     @Owner("Denis Pitsul")
-    @Description("Filter with 30000 min price and 20000 max price is not allowed test")
+    @Description("Verify that filtering with 30000 min price and 20000 max price is not allowed test")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/11")
+    @Issue("11")
     public void filterWith30000MinPriceAnd20000MaxPriceIsNotAllowedTest() {
         boolean isOkPriceFilterButtonDisabled = new HomePage(driver)
                 .onHeaderComponent()
@@ -60,42 +68,28 @@ public class LaptopFilterTest extends BaseTest {
         Assert.assertTrue(isOkPriceFilterButtonDisabled, "Ok price filter button is enabled");
     }
 
-    @Test
+    @Test(priority = 4)
     @Owner("Denis Pitsul")
-    @Description("Sort from the cheapest to most expensive test")
-    public void sortFromTheCheapestToMostExpensiveTest() {
-        List<Integer> actualPricesOfSortedItems = new HomePage(driver)
-                .onHeaderComponent()
-                .searchLaptops()
-                .selectLowerToHigherOption()
-                .getActualPricesOfSortedFromLowerToHigherItems();
-        List<Integer> expectedPricesOfSortedItems = actualPricesOfSortedItems
-                .stream()
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
-        Assert.assertEquals(actualPricesOfSortedItems, expectedPricesOfSortedItems, "Goods was not sorted correctly");
-    }
-
-    @Test
-    @Owner("Denis Pitsul")
-    @Description("Filter only available laptops from apple test")
+    @Description("Verify if user can filter only available laptops from apple brand")
+    @Severity(SeverityLevel.NORMAL)
+    @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/14")
+    @Issue("14")
     public void filterOnlyAvailableLaptopsFromAppleTest() {
-        LaptopBrandsPage laptopBrandsPage = new HomePage(driver)
+        LaptopsBrandPage laptopsBrandPage = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()
                 .onLaptopFilterComponent()
                 .chooseAppleBrand();
-        List<String> laptopTitles = laptopBrandsPage.getActualLaptopTitles();
+        List<String> laptopTitles = laptopsBrandPage.getActualLaptopTitles();
         Assert.assertTrue(laptopTitles
                         .stream()
-                        .allMatch(t -> t.contains(APPLE)),
-                "Not all laptop titles contains " + APPLE);
+                        .allMatch(t -> t.contains(APPLE)), "Not all laptop titles contains " + APPLE);
 
-        List<String> availabilityOfGoodsList = laptopBrandsPage
+        List<String> availabilityOfGoodsList = laptopsBrandPage
                 .onLaptopFilterComponent()
                 .chooseAvailableGoods()
                 .getAvailabilityOfGoodsList();
-        laptopTitles = laptopBrandsPage.getActualLaptopTitles();
+        laptopTitles = laptopsBrandPage.getActualLaptopTitles();
         Assert.assertTrue(laptopTitles
                         .stream()
                         .allMatch(t -> t.contains(APPLE)),

@@ -1,18 +1,19 @@
-package org.rozetka.pages;
+package org.rozetka.pages.laptops;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.rozetka.locators.LaptopPriceLocators;
+import org.rozetka.locators.LaptopsPriceLocators;
+import org.rozetka.pages.BasePageWithHeader;
 import org.rozetka.pages.components.LaptopFilterComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LaptopPricePage extends BasePageWithHeader {
+public class LaptopsPricePage extends BasePageWithHeader {
 
     private LaptopFilterComponent laptopFilterComponent;
 
-    public LaptopPricePage(WebDriver driver) {
+    public LaptopsPricePage(WebDriver driver) {
         super(driver);
         this.laptopFilterComponent = new LaptopFilterComponent(driver);
     }
@@ -24,8 +25,8 @@ public class LaptopPricePage extends BasePageWithHeader {
     @Step("Get actual prices of items")
     public List<Integer> getActualPricesOfItems() {
         pause(5);
-        waitForElementsToBeVisible(LaptopPriceLocators.PRICE_OF_ITEMS.getPath());
-        return driver.findElements(LaptopPriceLocators.PRICE_OF_ITEMS.getPath())
+        waitForElementsToBeVisible(LaptopsPriceLocators.PRICE_OF_ITEMS.getPath());
+        return driver.findElements(LaptopsPriceLocators.PRICE_OF_ITEMS.getPath())
                 .stream()
                 .map(e -> e.getText().replaceAll(" ", ""))
                 .map(Integer::parseInt)

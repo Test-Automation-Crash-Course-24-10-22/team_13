@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.rozetka.locators.HeaderLocators;
 import org.rozetka.pages.BasePage;
-import org.rozetka.pages.LaptopsPage;
+import org.rozetka.pages.laptops.LaptopsPage;
 
 public class HeaderComponent extends BasePage {
 

@@ -1,8 +1,9 @@
-package org.rozetka;
+package org.rozetka.listeners;
 
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.rozetka.BaseTest;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
