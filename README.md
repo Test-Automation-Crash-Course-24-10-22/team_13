@@ -9,8 +9,8 @@ The target website is https://rozetka.com.ua/ua/
 
 Automated tests:
 
+ - Checking filtering laptops by the brand, price and availibility.
  - Checking sorting notebooks by price.
- - Checkin filtering laptops by the brand, price and availibility (negative test example).
 
 ## Executing the Tests
 Clone the repository.
