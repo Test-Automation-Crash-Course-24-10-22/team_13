@@ -23,7 +23,7 @@ public class LaptopsPage extends BasePageWithHeader {
         return laptopFilterComponent;
     }
 
-    @Step("Select the 'Від дешевих до дорогих' option ")
+    @Step("Select the 'Від дешевих до дорогих' option")
     public LaptopsPricePage selectLowerToHigherOption() {
         pause(5);
         waitForElementToBeVisible(LaptopsLocators.SORT_FIELD.getPath());

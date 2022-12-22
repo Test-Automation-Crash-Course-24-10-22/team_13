@@ -53,7 +53,7 @@ public class LaptopFilteringTest extends BaseTest {
 
     @Test(priority = 3)
     @Owner("Denis Pitsul")
-    @Description("Verify that filtering with 30000 min price and 20000 max price is not allowed test")
+    @Description("Verify that filtering with 30000 min price and 20000 max price is not allowed")
     @Severity(SeverityLevel.NORMAL)
     @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/11")
     @Issue("11")
@@ -92,8 +92,7 @@ public class LaptopFilteringTest extends BaseTest {
         laptopTitles = laptopsBrandPage.getActualLaptopTitles();
         Assert.assertTrue(laptopTitles
                         .stream()
-                        .allMatch(t -> t.contains(APPLE)),
-                "Not all laptop titles contains " + APPLE);
+                        .allMatch(t -> t.contains(APPLE)), "Not all laptop titles contains " + APPLE);
         Assert.assertTrue(availabilityOfGoodsList
                         .stream()
                         .allMatch(avail -> avail.equals(AVAILABILITY_OF_GOODS_IS_AVAILABLE) || avail.equals(AVAILABILITY_OF_GOODS_READY_FOR_DELIVERY)),

@@ -9,7 +9,6 @@ import org.rozetka.pages.laptops.LaptopsPricePage;
 
 public class LaptopFilterComponent extends BasePage {
     private static final String APPLE = "Apple";
-    private static final String MICROSOFT = "Microsoft";
 
     public LaptopFilterComponent(WebDriver driver) {
         super(driver);
