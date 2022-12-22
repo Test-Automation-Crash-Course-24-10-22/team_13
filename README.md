@@ -1,4 +1,4 @@
-## Automation testing stack using Java, Selenium, TestNG, and Maven.
+## Automation testing stack using Java, Selenium, TestNG, Cucumber and Maven.
 
 It consists of:
 
