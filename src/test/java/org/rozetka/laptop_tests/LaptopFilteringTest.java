@@ -7,6 +7,7 @@ import org.rozetka.pages.laptops.LaptopsBrandPage;
 import org.rozetka.utils.TestDataReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -75,13 +76,14 @@ public class LaptopFilteringTest extends BaseTest {
     @Link("https://github.com/Test-Automation-Crash-Course-24-10-22/team_13/issues/14")
     @Issue("14")
     public void filterOnlyAvailableLaptopsFromAppleTest() {
+        SoftAssert softAssert = new SoftAssert();
         LaptopsBrandPage laptopsBrandPage = new HomePage(driver)
                 .onHeaderComponent()
                 .searchLaptops()
                 .onLaptopFilterComponent()
                 .chooseAppleBrand();
         List<String> laptopTitles = laptopsBrandPage.getActualLaptopTitles();
-        Assert.assertTrue(laptopTitles
+        softAssert.assertTrue(laptopTitles
                         .stream()
                         .allMatch(t -> t.contains(APPLE)), "Not all laptop titles contains " + APPLE);
 
@@ -90,12 +92,13 @@ public class LaptopFilteringTest extends BaseTest {
                 .chooseAvailableGoods()
                 .getAvailabilityOfGoodsList();
         laptopTitles = laptopsBrandPage.getActualLaptopTitles();
-        Assert.assertTrue(laptopTitles
+        softAssert.assertTrue(laptopTitles
                         .stream()
                         .allMatch(t -> t.contains(APPLE)), "Not all laptop titles contains " + APPLE);
-        Assert.assertTrue(availabilityOfGoodsList
+        softAssert.assertTrue(availabilityOfGoodsList
                         .stream()
                         .allMatch(avail -> avail.equals(AVAILABILITY_OF_GOODS_IS_AVAILABLE) || avail.equals(AVAILABILITY_OF_GOODS_READY_FOR_DELIVERY)),
                 "Not all laptop is available after filter");
+        softAssert.assertAll();
     }
 }
